@@ -3,6 +3,7 @@
   
 ## Tech Stack
   - React
+  - Node.js
   - Material UI
 
 #### TODO
