@@ -4,11 +4,10 @@
 ## Tech Stack
   - React
   - Node.js
-  - Material UI
 
 #### TODO
   - [ ] Design website layout
-  - [ ] Draw grid on visualization 
+  - [x] Draw grid for visualization 
   - [ ] Implement algorithms
   - [ ] Visualize algorithms
-  - [ ] Add user interaction with grid
+  - [x] Add user interaction with grid
