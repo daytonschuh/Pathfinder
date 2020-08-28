@@ -8,6 +8,14 @@
 #### TODO
   - [ ] Design website layout
   - [x] Draw grid for visualization 
-  - [ ] Implement algorithms
-  - [ ] Visualize algorithms
+  - Implement algorithms
+    - [x] Djikstra
+    - [ ] A*
+    - [ ] D*
+    - [ ] AnyAngle
+  - Visualize algorithms
+    - [ ] Dijkstra
+    - [ ] A*
+    - [ ] D*
+    - [ ] AnyAngle
   - [x] Add user interaction with grid
