@@ -9,7 +9,7 @@
   - [ ] Design website layout
   - [x] Draw grid for visualization 
   - Implement algorithms
-    - [x] Djikstra
+    - [x] Dijkstra
     - [ ] A*
     - [ ] D*
     - [ ] BFS
