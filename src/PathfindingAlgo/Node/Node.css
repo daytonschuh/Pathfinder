@@ -6,11 +6,11 @@
 }
 
 .node-finish {
-  background-color: black;
+  background-color: rgb(255, 0, 0);
 }
 
 .node-start {
-  background-color: black;
+  background-color: rgb(0, 255, 0);
 }
 
 .node-visited {
@@ -47,7 +47,14 @@
 }
 
 .node-wall {
-  background-color: rgb(0, 0, 0);
+  animation-name: placeWall;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
 }
 
 .node-shortest-path {
@@ -75,5 +82,22 @@
   100% {
     transform: scale(1);
     background-color: rgb(243, 243, 72);
+  }
+}
+
+@keyframes placeWall {
+  0% {
+    transform: scale(0.6);
+    background-color: rgb(0, 0, 0);
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: rgb(22, 22, 24);
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: rgb(28, 19, 61);
   }
 }

@@ -12,7 +12,7 @@
 
 import React, { Component } from 'react';
 import Node from './Node/Node';
-import { dijkstra, getNodesInShortestPathOrder } from '../pathfindingAlgos/dijkstraAlgorithm';
+import { dijkstra, aStar, dStar, getNodesInShortestPathOrder } from '../pathfindingAlgos/dijkstraAlgorithm';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, NavbarText } from 'reactstrap';
 
 import './PathfindingAlgo.css';
@@ -86,6 +86,42 @@ export default class PathfindingVisualizer extends Component {
         this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
     }
 
+    visualizeAStar() {
+        const { grid } = this.state;
+        const startNode = grid[START_NODE_ROW][START_NODE_COL];
+        const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+        const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    }
+
+    visualizeDStar() {
+        const { grid } = this.state;
+        const startNode = grid[START_NODE_ROW][START_NODE_COL];
+        const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+        const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    }
+
+    visualizeBFS() {
+        const { grid } = this.state;
+        const startNode = grid[START_NODE_ROW][START_NODE_COL];
+        const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+        const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    }
+
+    visualizeDFS() {
+        const { grid } = this.state;
+        const startNode = grid[START_NODE_ROW][START_NODE_COL];
+        const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+        const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+    }
+
     resetGrid() {
         /* TODO: Stop any other current animation taking place... */
 
@@ -110,13 +146,17 @@ export default class PathfindingVisualizer extends Component {
 
                 /* Draw the nodes */
                 setTimeout(() => {
-                    if (!newNode.isStart && !newNode.isFinish){
+                    if (!newNode.isStart && !newNode.isFinish) {
                         document.getElementById(`node-${newNode.row}-${newNode.col}`).className =
-                        'node node-reset';
+                            'node node-reset';
                     }
-                    else{
+                    else if (newNode.isStart) {
                         document.getElementById(`node-${newNode.row}-${newNode.col}`).className =
-                        'node node-start';
+                            'node node-start';
+                    }
+                    else {
+                        document.getElementById(`node-${newNode.row}-${newNode.col}`).className =
+                            'node node-finish';
                     }
                 });
             }
@@ -149,20 +189,20 @@ export default class PathfindingVisualizer extends Component {
                                         </DropdownItem>
 
                                         <DropdownItem id="startAStar">
-                                            Visualize A*
-                  </DropdownItem>
+                                            <div onClick={() => this.visualizeAStar()}>Visualize A*</div>
+                                        </DropdownItem>
 
                                         <DropdownItem id="startDStar">
-                                            Visualize D*
-                  </DropdownItem>
+                                            <div onClick={() => this.visualizeDStar()}>Visualize D*</div>
+                                        </DropdownItem>
 
                                         <DropdownItem id="startBFS">
-                                            Visualize BFS
-                  </DropdownItem>
+                                            <div onClick={() => this.visualizeBFS()}>Visualize BFS</div>
+                                        </DropdownItem>
 
                                         <DropdownItem id="startDFS">
-                                            Visualize DFS
-                  </DropdownItem>
+                                            <div onClick={() => this.visualizeDFS()}>Visualize DFS</div>
+                                        </DropdownItem>
 
                                         <DropdownItem divider />
                                         <DropdownItem id="resetGrid">
@@ -249,5 +289,7 @@ const getNewGridWithWallToggled = (grid, row, col) => {
         isWall: !node.isWall,
     };
     newGrid[row][col] = newNode;
+    document.getElementById(`node-${node.row}-${node.col}`).className =
+        'node node-wall';
     return newGrid;
 };
