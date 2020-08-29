@@ -16,7 +16,7 @@
     - [ ] DFS
     - [ ] AnyAngle
   - Visualize algorithms
-    - [ ] Dijkstra
+    - [x] Dijkstra
     - [ ] A*
     - [ ] D*
     - [ ] BFS
