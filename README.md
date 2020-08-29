@@ -12,10 +12,14 @@
     - [x] Djikstra
     - [ ] A*
     - [ ] D*
+    - [ ] BFS
+    - [ ] DFS
     - [ ] AnyAngle
   - Visualize algorithms
     - [ ] Dijkstra
     - [ ] A*
     - [ ] D*
+    - [ ] BFS
+    - [ ] DFS
     - [ ] AnyAngle
   - [x] Add user interaction with grid
